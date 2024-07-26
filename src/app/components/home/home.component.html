@@ -1,4 +1,10 @@
-<div class="p-4 grid xl:grid-cols-7">
+<div class="flex justify-end">
+  <div class="m-10 mr-10 text-right cursor-pointer bg-white py-1 px-2 rounded-lg shadow-sm" (click)="onRefresh()">
+    Osvježi
+  </div>
+</div>
+
+<div class="p-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
   @for (employee of allEmployees; track $index) {
   <div class="bg-white p-3 m-3 mt-10 rounded-xl text-center relative shadow-lg">
     <div class="flex flex-col justify-between">

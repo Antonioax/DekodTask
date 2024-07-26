@@ -27,4 +27,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.allEmployeesSub.unsubscribe();
   }
+
+  onRefresh(){
+    this.employeeService.fetchAllEmployees();
+  }
 }
