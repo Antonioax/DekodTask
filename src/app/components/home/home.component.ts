@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   allJobs = Jobs;
 
   search: string = '';
-  selectedJob = "Svi";
+  selectedJob = 'Svi';
+  selectedSort = 'Ime';
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -55,5 +56,40 @@ export class HomeComponent implements OnInit, OnDestroy {
         fullName.includes(this.search.toLowerCase())
       );
     });
+  }
+
+  onSort() {
+    switch (this.selectedSort) {
+      case 'ImeA':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          a.firstName.localeCompare(b.firstName)
+        );
+        break;
+      case 'ImeZ':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          b.firstName.localeCompare(a.firstName)
+        );
+        break;
+      case 'PrezimeA':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          a.lastName.localeCompare(b.lastName)
+        );
+        break;
+      case 'PrezimeZ':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          b.lastName.localeCompare(a.lastName)
+        );
+        break;
+      case 'PozicijaA':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          a.jobTitle.localeCompare(b.jobTitle)
+        );
+        break;
+      case 'PozicijaZ':
+        this.filteredEmployees = this.filteredEmployees.sort((a, b) =>
+          b.jobTitle.localeCompare(a.jobTitle)
+        );
+        break;
+    }
   }
 }

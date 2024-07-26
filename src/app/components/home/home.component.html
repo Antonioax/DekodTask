@@ -28,10 +28,19 @@
 
   <div class="text-center w-[200px] max-w-[80%] mb-3">
     <div class="text-sm mb-2">SORTIRAJ</div>
-    <select name="sort" id="sort" class="p-2 rounded-lg text-center w-[200px] max-w-[80%]">
-      <option value="Svi">Ime</option>
-      <option value="Svi">Prezime</option>
-      <option value="Svi">Pozicija</option>
+    <select
+      name="sort"
+      id="sort"
+      [(ngModel)]="selectedSort"
+      (ngModelChange)="onSort()"
+      class="p-2 rounded-lg text-center w-[200px] max-w-[80%]"
+    >
+      <option value="ImeA">Ime (A-Z)</option>
+      <option value="ImeZ">Ime (Z-A)</option>
+      <option value="PrezimeA">Prezime (A-Z)</option>
+      <option value="PrezimeZ">Prezime (Z-A)</option>
+      <option value="PozicijaA">Pozicija (A-Z)</option>
+      <option value="PozicijaZ">Pozicija (Z-A)</option>
     </select>
   </div>
 </div>
