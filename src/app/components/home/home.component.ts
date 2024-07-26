@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employees.service';
 import { Subscription } from 'rxjs';
 import { Employee } from '../../models/employee';
+import { PrettyDatePipe } from "../../pipes/pretty-date.pipe";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [PrettyDatePipe],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {

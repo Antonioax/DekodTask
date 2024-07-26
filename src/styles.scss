@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.active-link{
+body {
+  background-color: rgb(186 230 253);
+}
+
+.active-link {
   font-weight: 400;
 }

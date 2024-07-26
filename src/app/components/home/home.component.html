@@ -1,3 +1,8 @@
-@for (employee of allEmployees; track $index) {
-  <div>{{employee.firstName}}</div>
-}
+
+<div class="p-4">
+  @for (employee of allEmployees; track $index) {
+    <div>{{employee.firstName + " " + employee.lastName}}</div>
+    <div>{{employee.dateOfBirth | prettyDate}}</div>
+    <div>{{employee.jobTitle}}</div>
+  }
+</div>
