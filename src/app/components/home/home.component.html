@@ -48,7 +48,7 @@
 <div
   class="p-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
 >
-  @for (employee of displayedEmployees; track $index) {
+  @for (employee of filteredEmployees; track $index) {
   <div
     class="bg-white p-3 m-3 mt-10 rounded-xl text-center relative shadow-lg {{
       selectedJob === 'Svi' ||
@@ -73,9 +73,9 @@
   }
 </div>
 
-<app-pagination
+<!-- <app-pagination
   [length]="filteredEmployees.length"
   [pageSize]="pagePosts"
   [pageOptions]="paginationOptions"
   (change)="onPageChange($event)"
-></app-pagination>
+></app-pagination> -->

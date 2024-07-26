@@ -24,7 +24,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 export class HomeComponent implements OnInit, OnDestroy {
   allEmployees: Employee[] = [];
   filteredEmployees: Employee[] = [];
-  displayedEmployees: Employee[] = [];
+  // displayedEmployees: Employee[] = [];
   allEmployeesSub!: Subscription;
 
   allJobs = Jobs;
@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedJob = 'Svi';
   selectedSort = 'Ime';
 
-  currentPage = 1;
-  paginationOptions = [1, 2, 5, 10, 20];
-  pagePosts = 10;
+  // currentPage = 1;
+  // paginationOptions = [1, 2, 5, 10, 20];
+  // pagePosts = 20;
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.filteredEmployees = this.allEmployees;
         this.onFilterName();
         this.onSort();
-        this.paginate();
+        //this.paginate();
       },
     });
   }
@@ -108,18 +108,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  paginate() {
-    this.displayedEmployees = this.filteredEmployees.slice(
-      this.pagePosts * (this.currentPage - 1),
-      this.pagePosts * (this.currentPage - 1) + this.pagePosts
-    );
-  }
+  // paginate() {
+  //   this.displayedEmployees = this.filteredEmployees.slice(
+  //     this.pagePosts * (this.currentPage - 1),
+  //     this.pagePosts * (this.currentPage - 1) + this.pagePosts
+  //   );
+  // }
 
-  onPageChange(event: any) {
-    if (event.pageIndex || event.pageIndex === 0) {
-      this.currentPage = event.pageIndex + 1;
-      this.pagePosts = event.pageSize;
-      this.paginate();
-    }
-  }
+  // onPageChange(event: any) {
+  //   if (event.pageIndex || event.pageIndex === 0) {
+  //     this.currentPage = event.pageIndex + 1;
+  //     this.pagePosts = event.pageSize;
+  //     this.paginate();
+  //   }
+  // }
 }
