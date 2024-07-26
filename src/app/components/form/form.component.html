@@ -1,1 +1,66 @@
-<p>form works!</p>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="flex flex-col gap-2 justify-center items-center mt-24">
+    <div class="text-3xl mb-6">Dodaj novog zaposlenika</div>
+    <input
+      type="text"
+      name="firstName"
+      id="firstName"
+      class="p-2 rounded-lg text-center w-[400px] max-w-[80%] shadow-sm"
+      placeholder="Ime"
+      required
+      [(ngModel)]="formValues.firstName"
+      #firstName="ngModel"
+    />
+    <input
+      type="text"
+      name="lastName"
+      id="lastName"
+      class="p-2 rounded-lg text-center w-[400px] max-w-[80%] shadow-sm"
+      placeholder="Prezime"
+      required
+      [(ngModel)]="formValues.lastName"
+      #lastName="ngModel"
+    />
+    <input
+      type="datetime-local"
+      name="dateOfBirth"
+      id="dateOfBirth"
+      class="p-2 rounded-lg text-center w-[400px] max-w-[80%] shadow-sm"
+      placeholder="Datum rođenja"
+      required
+      [(ngModel)]="formValues.dateOfBirth"
+      #dateOfBirth="ngModel"
+    />
+    <select
+      name="job"
+      id="job"
+      class="p-2 rounded-lg text-center w-[200px] max-w-[80%] shadow-sm"
+      [(ngModel)]="formValues.selectedJob"
+      required
+    >
+      <option value="null" disabled selected>Pozicija</option>
+      @for (job of allJobs; track $index) {
+      <option [value]="job[0]">{{ job[0] }}</option>
+      }
+    </select>
+
+    <button
+      type="submit"
+      class="p-2 px-4 mt-4 bg-green-600 text-white rounded-lg shadow-sm"
+      [disabled]="form.invalid"
+    >
+      Dodaj zaposlenika
+    </button>
+    <button
+      type="button"
+      class="p-2 px-4 bg-red-600 text-white rounded-lg shadow-sm"
+      [ngClass]="{
+        'block': form.dirty,
+        'hidden': !form.dirty
+      }"
+      (click)="onReset(form)"
+    >
+      Resetiraj
+    </button>
+  </div>
+</form>
