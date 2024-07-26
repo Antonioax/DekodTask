@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.allEmployees = data;
         this.filteredEmployees = this.allEmployees;
+        this.onFilterName();
+        this.onSort();
       },
     });
   }
