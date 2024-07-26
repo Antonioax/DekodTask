@@ -3,11 +3,13 @@ import { EmployeeService } from '../../services/employees.service';
 import { Subscription } from 'rxjs';
 import { Employee } from '../../models/employee';
 import { PrettyDatePipe } from "../../pipes/pretty-date.pipe";
+import { PrettyJobPipe } from "../../pipes/pretty-job.pipe";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PrettyDatePipe],
+  imports: [CommonModule, PrettyDatePipe, PrettyJobPipe],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {

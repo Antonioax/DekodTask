@@ -1,8 +1,18 @@
-
-<div class="p-4">
+<div class="p-4 grid xl:grid-cols-7">
   @for (employee of allEmployees; track $index) {
-    <div>{{employee.firstName + " " + employee.lastName}}</div>
-    <div>{{employee.dateOfBirth | prettyDate}}</div>
-    <div>{{employee.jobTitle}}</div>
+  <div class="bg-white p-3 m-3 mt-10 rounded-xl text-center relative shadow-lg">
+    <div class="flex flex-col justify-between">
+      <div class="text-lg font-medium">
+        {{ employee.firstName + " " + employee.lastName }}
+      </div>
+    </div>
+    <div>{{ employee.dateOfBirth | prettyDate }}</div>
+    <div
+      class="absolute top-0 right-3 translate -translate-y-full px-2 py-1 rounded-t-lg text-sm"
+      [ngStyle]="{ 'background-color': employee.jobTitle | prettyJob }"
+    >
+      {{ employee.jobTitle | uppercase }}
+    </div>
+  </div>
   }
 </div>
