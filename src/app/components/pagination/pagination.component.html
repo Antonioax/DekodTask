@@ -1,0 +1,44 @@
+<div class="mb-10 flex justify-center items-center text-center text-sm">
+  <div
+    class="w-full flex flex-col items-center gap-6 py-6 rounded-lg"
+  >
+    <div class="flex">
+      <div
+        class="w-7 h-7 hover:cursor-pointer {{
+          pageIndex() === 0 ? 'opacity-50' : 'opacity-100'
+        }}"
+        (click)="onBack()"
+      >
+        <img src="assets/arrowLeft.svg" alt="Back arrow" />
+      </div>
+      <div
+        class="w-7 h-7 hover:cursor-pointer {{
+          pageIndex() + 1 === totalPages() ? 'opacity-50' : 'opacity-100'
+        }}"
+        (click)="onNext()"
+      >
+        <img src="assets/arrowRight.svg" alt="Next arrow" />
+      </div>
+    </div>
+    <div class="text-black">
+      <div class="text-[10px]">Ukupno zaposlenika: {{ length() }}</div>
+      <div>Stranica {{ pageIndex() + 1 }} / {{ totalPages() }}</div>
+      <div class="mt-3 flex items-center gap-1">
+        Zaposlenika po stranici:
+        <select
+          name=""
+          id=""
+          class="text-center rounded-lg"
+          (change)="onChange()"
+          [(ngModel)]="selectedOption"
+        >
+          @for (option of pageOptions(); track $index) {
+          <option [value]="option" class="text-center">
+            {{ option }}
+          </option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

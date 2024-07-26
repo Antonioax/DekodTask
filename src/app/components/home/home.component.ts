@@ -7,16 +7,24 @@ import { PrettyJobPipe } from '../../pipes/pretty-job.pipe';
 import { CommonModule } from '@angular/common';
 import { Jobs } from '../../models/jobs';
 import { FormsModule } from '@angular/forms';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, PrettyDatePipe, PrettyJobPipe],
+  imports: [
+    FormsModule,
+    CommonModule,
+    PrettyDatePipe,
+    PrettyJobPipe,
+    PaginationComponent,
+  ],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {
   allEmployees: Employee[] = [];
   filteredEmployees: Employee[] = [];
+  displayedEmployees: Employee[] = [];
   allEmployeesSub!: Subscription;
 
   allJobs = Jobs;
@@ -24,6 +32,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   search: string = '';
   selectedJob = 'Svi';
   selectedSort = 'Ime';
+
+  currentPage = 1;
+  paginationOptions = [1, 2, 5, 10, 20];
+  pagePosts = 10;
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -34,6 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.filteredEmployees = this.allEmployees;
         this.onFilterName();
         this.onSort();
+        this.paginate();
       },
     });
   }
@@ -92,6 +105,21 @@ export class HomeComponent implements OnInit, OnDestroy {
           b.jobTitle.localeCompare(a.jobTitle)
         );
         break;
+    }
+  }
+
+  paginate() {
+    this.displayedEmployees = this.filteredEmployees.slice(
+      this.pagePosts * (this.currentPage - 1),
+      this.pagePosts * (this.currentPage - 1) + this.pagePosts
+    );
+  }
+
+  onPageChange(event: any) {
+    if (event.pageIndex || event.pageIndex === 0) {
+      this.currentPage = event.pageIndex + 1;
+      this.pagePosts = event.pageSize;
+      this.paginate();
     }
   }
 }
