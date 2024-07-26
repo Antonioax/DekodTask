@@ -1,10 +1,32 @@
-<div class="flex justify-end">
-  <div class="m-10 mr-10 text-right cursor-pointer bg-white py-1 px-2 rounded-lg shadow-sm" (click)="onRefresh()">
+<div class="flex flex-col justify-center items-center gap-2">
+  <div
+    class="mt-4 mr-10 self-end cursor-pointer bg-white py-1 px-2 rounded-lg shadow-sm"
+    (click)="onRefresh()"
+  >
     Osvježi
   </div>
+  <input
+    type="text"
+    name="search"
+    id="search"
+    class="p-2 rounded-lg text-center w-[400px] max-w-[80%]"
+    placeholder="Ime Prezime"
+  />
+  <select
+    name="job"
+    id="job"
+    class="p-2 rounded-lg text-center w-[200px] max-w-[80%]"
+  >
+    <option value="svi" selected>Svi</option>
+    @for (job of allJobs; track $index) {
+    <option value="">{{ job[0] }}</option>
+    }
+  </select>
 </div>
 
-<div class="p-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+<div
+  class="p-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
+>
   @for (employee of allEmployees; track $index) {
   <div class="bg-white p-3 m-3 mt-10 rounded-xl text-center relative shadow-lg">
     <div class="flex flex-col justify-between">

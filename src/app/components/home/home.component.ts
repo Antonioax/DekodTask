@@ -5,6 +5,7 @@ import { Employee } from '../../models/employee';
 import { PrettyDatePipe } from "../../pipes/pretty-date.pipe";
 import { PrettyJobPipe } from "../../pipes/pretty-job.pipe";
 import { CommonModule } from "@angular/common";
+import { Jobs } from "../../models/jobs";
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,8 @@ import { CommonModule } from "@angular/common";
 export class HomeComponent implements OnInit, OnDestroy {
   allEmployees: Employee[] = [];
   allEmployeesSub!: Subscription;
+
+  allJobs = Jobs;
 
   constructor(private employeeService: EmployeeService) {}
 
